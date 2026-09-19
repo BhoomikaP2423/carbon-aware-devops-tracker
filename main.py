@@ -2,7 +2,12 @@ from fastapi import FastAPI
 from datetime import datetime
 
 app = FastAPI(title="Carbon-Aware DevOps Tracker")
-
+@app.get("/")
+def root():
+    return {
+        "app": "Carbon-Aware DevOps Tracker",
+        "endpoints": ["/health", "/builds", "/deployments", "/carbon-report", "/optimize"]
+    }
 # In-memory storage (resets when the app restarts — that's fine for this assignment)
 builds = []
 deployments = []
