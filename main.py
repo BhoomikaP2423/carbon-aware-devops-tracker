@@ -1,3 +1,4 @@
+import math
 from fastapi import FastAPI
 from datetime import datetime
 
@@ -88,5 +89,6 @@ def optimize():
     return {
         "average_replicas": round(avg_replicas, 2),
         "max_replicas": max_replicas,
+        "recommended_replicas": math.ceil(avg_replicas),
         "flags": flags if flags else ["No significant waste detected."]
     }
