@@ -1,0 +1,4 @@
+---
+app_port: 8001
+app_dir: /opt/carbon-tracker
+project_src: "{{ playbook_dir }}/.."

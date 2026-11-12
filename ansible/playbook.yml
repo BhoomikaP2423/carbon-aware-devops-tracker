@@ -1,0 +1,6 @@
+---
+- name: Deploy Carbon-Aware DevOps Tracker
+  hosts: app_servers
+  become: true
+  roles:
+    - carbon_app

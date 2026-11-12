@@ -1,0 +1,9 @@
+#SPDX-License-Identifier: MIT-0
+---
+- name: Restart carbon-tracker
+  ansible.builtin.systemd:
+    name: carbon-tracker
+    state: restarted
+    daemon_reload: true
+
+# handlers file for carbon_app
