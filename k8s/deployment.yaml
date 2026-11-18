@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: carbon-tracker
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: carbon-tracker
+  template:
+    metadata:
+      labels:
+        app: carbon-tracker
+    spec:
+      containers:
+        - name: carbon-tracker
+          image: carbon-tracker:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8000
+          env:
+            - name: GRID_CARBON_INTENSITY
+              valueFrom:
+                configMapKeyRef:
+                  name: carbon-config
+                  key: GRID_CARBON_INTENSITY
