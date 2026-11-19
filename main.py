@@ -1,3 +1,4 @@
+import os
 import math
 from fastapi import FastAPI
 from datetime import datetime
@@ -16,7 +17,7 @@ deployments = []
 # Rough constants for estimating energy/carbon cost.
 # These are simplified assumptions, not scientifically precise — good enough for demonstrating the concept.
 POWER_DRAW_WATTS = 65          # estimated average power draw per "unit" of compute during a build/pod
-GRID_CARBON_INTENSITY = 0.7    # kg CO2 per kWh (rough grid average, India-ish)
+GRID_CARBON_INTENSITY = float(os.environ.get("GRID_CARBON_INTENSITY", "0.7"))  # kg CO2 per kWh
 
 
 @app.get("/health")
